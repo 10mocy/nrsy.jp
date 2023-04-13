@@ -1,81 +1,93 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Logotype from "../assets/logotype.svg";
+
+import { Sprite } from "astro-icon";
+
+const menus: {
+  icon: string;
+  url: string;
+}[] = [
+  {
+    icon: "fa:twitter",
+    url: "https://twitter.com/nirsmmy",
+  },
+  {
+    icon: "mdi:web",
+    url: "https://nectarition.jp/posts/",
+  }
+];
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
-</Layout>
+<Layout>
+  <main class="main">
+    <section class="container">
+      <div class="link">
+        <Sprite.Provider>
+          {
+            menus.map((item) => (
+              <a class="link_icon" href={item.url}>
+                <Sprite name={item.icon} />
+              </a>
+            ))
+          }
+        </Sprite.Provider>
+      </div>
+      <div class="logo">
+        <img class="logo" src={Logotype} />
+      </div>
+      <div class="share">
+        <a class="button" href="">SHARE</a>
+      </div>
+    </section>
+  </main>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
+  <style lang="scss">
+    .main {
+      height: 100%;
+      background-color: var(--primary-color);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      display: grid;
+      gap: 20px;
+    }
+    .logo {
+      text-align: center;
+      img {
+        height: 48px;
+      }
+    }
+    .link {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      justify-content: center;
+      &_icon {
+        font-size: 0;
+        svg {
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          color: #ffffff;
+        }
+      }
+    }
+    .share {
+      text-align: center;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #ffffff;
+      padding: 10px;
+      color: var(--primary-color);
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 10px;
+    }
+  </style>
+</Layout>
