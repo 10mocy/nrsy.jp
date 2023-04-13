@@ -1,0 +1,72 @@
+---
+import { Sprite } from "astro-icon";
+
+import TodoiwaSVG from "../assets/services/todoiwa.svg";
+import NectaritionSVG from "../assets/services/nectarition.svg";
+
+const menus: {
+  url: string;
+  icon?: string;
+  svg?: string;
+}[] = [
+  {
+    svg: TodoiwaSVG,
+    url: "https://mis.shiokazehs.jp/@nirsmmy",
+  },
+  {
+    svg: NectaritionSVG,
+    url: "https://nectarition.jp/posts/",
+  },
+  {
+    icon: "fa:twitter",
+    url: "https://twitter.com/nirsmmy",
+  },
+  {
+    icon: "fa-brands:github",
+    url: "https://github.com/10mocy",
+  },
+  {
+    icon: "simple-icons:niconico",
+    url: "https://www.nicovideo.jp/user/116330134",
+  },
+  {
+    icon: "fa-brands:keybase",
+    url: "https://keybase.io/10mocy",
+  },
+  {
+    icon: "mdi:email",
+    url: "mailto:smmy@nectarition.jp",
+  },
+];
+---
+
+<div class="menu">
+  <Sprite.Provider>
+    {
+      menus.map((item) => (
+        <a class="menu_icon" href={item.url}>
+          {item.icon && <Sprite name={item.icon} />}
+          {item.svg && <img class="menu_icon_svg" src={item.svg} />}
+        </a>
+      ))
+    }
+  </Sprite.Provider>
+</div>
+
+<style lang="scss">
+  .menu {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    &_icon {
+      &_svg,
+      svg {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        color: #ffffff;
+      }
+    }
+  }
+</style>

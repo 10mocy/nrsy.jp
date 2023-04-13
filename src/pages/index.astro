@@ -1,52 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Logotype from "../assets/logotype.svg";
 
-import { Sprite } from "astro-icon";
-
-const menus: {
-  icon: string;
-  url: string;
-}[] = [
-  {
-    icon: "fa:twitter",
-    url: "https://twitter.com/nirsmmy",
-  },
-  {
-    icon: "mdi:web",
-    url: "https://nectarition.jp/posts/",
-  },
-  {
-    icon: "fa-brands:keybase",
-    url: "https://keybase.io/10mocy",
-  },
-];
+import Menu from "../components/Menu.astro";
+import Logotype from "../components/Logotype.astro";
 ---
 
 <Layout>
   <main class="main">
     <section class="container">
-      <div class="link">
-        <Sprite.Provider>
-          {
-            menus.map((item) => (
-              <a class="link_icon" href={item.url}>
-                <Sprite name={item.icon} />
-              </a>
-            ))
-          }
-        </Sprite.Provider>
-      </div>
-      <div class="logo">
-        <img class="logo" src={Logotype} />
-      </div>
-      <div class="share">
-        <a
-          class="button"
-          href="https://twitter.com/intent/tweet?text=SOMEMIYA%20NEIRO%20https%3A%2F%2Fnrsy.jp%20%40nirsmmy"
-          >SHARE</a
-        >
-      </div>
+      <Logotype />
+      <Menu />
     </section>
   </main>
 
@@ -62,40 +25,6 @@ const menus: {
     .container {
       display: grid;
       gap: 20px;
-    }
-    .logo {
-      text-align: center;
-      img {
-        height: 48px;
-      }
-    }
-    .link {
-      display: flex;
-      gap: 5px;
-      align-items: center;
-      justify-content: center;
-      &_icon {
-        font-size: 0;
-        svg {
-          display: inline-block;
-          width: 24px;
-          height: 24px;
-          color: #ffffff;
-        }
-      }
-    }
-    .share {
-      text-align: center;
-    }
-
-    .button {
-      display: inline-block;
-      background-color: #ffffff;
-      padding: 10px;
-      color: var(--primary-color);
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 10px;
     }
   </style>
 </Layout>
