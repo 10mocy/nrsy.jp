@@ -15,6 +15,20 @@ const title = propsTitle ? `${propsTitle} - nrsy.jp` : "nrsy.jp";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <meta name="description" content="nrsy.jp / SOMEMIYA NEIRO" />
+
+    <meta property="og:title" content="nrsy.jp" />
+    <meta property="og:site_name" content="nrsy.jp" />
+    <meta property="og:image" content="https://nsry.jp/icon.png" />
+    <meta property="og:url" content="https://nsry.jp/" />
+    <meta property="og:description" content="nrsy.jp / SOMEMIYA NEIRO" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@nirsmmy" />
+    <meta name="twitter:title" content="nrsy.jp" />
+    <meta name="twitter:description" content="nrsy.jp / SOMEMIYA NEIRO" />
+    <meta name="twitter:image" content="https://nsry.jp/icon.png" />
   </head>
   <body>
     <slot />
@@ -22,7 +36,7 @@ const title = propsTitle ? `${propsTitle} - nrsy.jp` : "nrsy.jp";
 </html>
 
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&display=swap");
   :root {
     --primary-color: #cf4c5c;
   }
@@ -36,7 +50,7 @@ const title = propsTitle ? `${propsTitle} - nrsy.jp` : "nrsy.jp";
 
   body {
     height: 100vh;
-    font-family: 'Zen Kaku Gothic New';
+    font-family: "Zen Kaku Gothic New";
     line-height: 1em;
   }
 </style>
