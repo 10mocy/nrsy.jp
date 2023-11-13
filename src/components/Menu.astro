@@ -5,35 +5,43 @@ import TodoiwaSVG from "../assets/services/todoiwa.svg";
 import NectaritionSVG from "../assets/services/nectarition.svg";
 
 const menus: {
+  name: string;
   url: string;
   icon?: string;
   svg?: string;
 }[] = [
   {
+    name: "Misskey",
     svg: TodoiwaSVG,
     url: "https://todo.shiokazehs.jp/@nirsmmy",
   },
   {
+    name: "Nectarition",
     svg: NectaritionSVG,
     url: "https://nectarition.jp/",
   },
   {
+    name: "X",
     icon: "fa:twitter",
     url: "https://x.com/nirsmmy",
   },
   {
+    name: "GitHub",
     icon: "fa-brands:github",
     url: "https://github.com/10mocy",
   },
   {
+    name: "niconico",
     icon: "simple-icons:niconico",
     url: "https://www.nicovideo.jp/user/116330134",
   },
   {
+    name: "Keybase",
     icon: "fa-brands:keybase",
     url: "https://keybase.io/10mocy",
   },
   {
+    name: "Mail",
     icon: "mdi:email",
     url: "mailto:ts@nectarition.jp",
   },
@@ -43,12 +51,13 @@ const menus: {
 <div class="menu">
   <Sprite.Provider>
     {
-      menus.map((item) => (
-        <a class="menu_icon" href={item.url}>
+      menus.map((item) => <span class="menu_item">
+        <a class="menu_item_icon" href={item.url}>
           {item.icon && <Sprite name={item.icon} />}
-          {item.svg && <img class="menu_icon_svg" src={item.svg} />}
+          {item.svg && <img class="menu_item_icon_svg" src={item.svg} />}
         </a>
-      ))
+        <span class="menu_item_label">{item.name}</span>
+      </span>)
     }
   </Sprite.Provider>
 </div>
@@ -56,16 +65,63 @@ const menus: {
 <style lang="scss">
   .menu {
     display: flex;
-    gap: 10px;
+    gap: 0px;
     align-items: center;
     justify-content: center;
-    &_icon {
-      &_svg,
-      svg {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
+
+    &_item {
+      padding: 5px;
+      position: relative;
+      
+      &_icon {
+        &_svg,
+        svg {
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          color: #ffffff;
+
+          transition: 0.2s ease;
+        }
+      }
+
+      &_label {
+        position: absolute;
+        padding: 5px;
+        margin-top: 12px;
+        top: calc(100%);
+        left: 50%;
+        transform: translate(-50%, 0);
         color: #ffffff;
+        background-color: #202020;
+
+        opacity: 0;
+        transition: 0.2s ease;
+
+        &::before {
+          position: absolute;
+          display: inline-block;
+          content: '';
+          width: 16px;
+          height: calc(tan(60deg) * 14px / 2);
+          top: -8px;
+          left: 50%;
+          transform: translate(-8px, 0);
+          clip-path: polygon(50% 0, 100% 100%, 0 100%);
+          background-color: #202020;
+        }
+      }
+
+      &:hover &_icon {
+        &_svg,
+        svg {
+          width: 64px;
+          height: 64px;
+        }
+      }
+
+      &:hover &_label {
+        opacity: 1;
       }
     }
   }
