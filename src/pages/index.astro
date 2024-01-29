@@ -1,32 +1,160 @@
 ---
-import Layout from "../layouts/Layout.astro";
-
-import Menu from "../components/Menu.astro";
-import Logotype from "../components/Logotype.astro";
-import Share from "../components/Share.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout>
-  <main class="main">
-    <section class="container">
-      <Logotype />
-      <Menu />
-      <Share />
-    </section>
+<BaseLayout>
+  <main class="container">
+    <div class="nameplate">
+      <div class="nameplate_name">染宮ねいろ</div>
+      <div class="nameplate_yomi">SOMEMIYA Neiro</div>
+    </div>
+    <div class="contact">
+      <div class="contact_card">
+        <a class="contact_card_link" href="mailto:ts@nectarition.jp">
+          ts@nectarition.jp
+        </a>
+        <span class="contact_card_description">
+          メールでお問い合わせいただくのが一番早いです。<br />
+          (営業日のみ返答)
+        </span>
+      </div>
+      <div class="contact_card">
+        <a class="contact_card_link" href="https://twitter.com/nectarition">
+          twitter.com/nectarition
+        </a>
+        <span class="contact_card_description">
+          携わったプロジェクト・作品をポストしています。
+        </span>
+      </div>
+      <div class="contact_card">
+        <a class="contact_card_link" href="https://twitter.com/nirsmmy">
+          twitter.com/nirsmmy
+        </a>
+        <span class="contact_card_description">個人的なツイート多め。</span>
+      </div>
+      <div class="contact_card">
+        <a class="contact_card_link" href="https://nectarition.jp/posts">
+          nectarition.jp/posts
+        </a>
+        <span class="contact_card_description">
+          個人サークルサイトでブログを書いています。
+        </span>
+      </div>
+      <div class="contact_card">
+        <a
+          class="contact_card_link"
+          href="https://www.nicovideo.jp/user/116330134"
+        >
+          nicovideo.jp/user/116330134
+        </a>
+        <span class="contact_card_description">
+          かつては動画を投稿していたのだが、<br />
+          膝に矢を受けてしまってな。
+        </span>
+      </div>
+      <div class="contact_card">
+        <a class="contact_card_link" href="https://keybase.io/10mocy">
+          keybase.io/10mocy
+        </a>
+        <span class="contact_card_description">
+          私のPGP公開鍵を求める物好きは<br />
+          こちらからどうぞ。
+        </span>
+      </div>
+      <div class="contact_card">
+        <a
+          class="contact_card_link"
+          href="https://www.amazon.co.jp/hz/wishlist/ls/FQ09A6XPLXOR"
+        >
+          amazon.co.jp/wishlist
+        </a>
+        <span class="contact_card_description">誕生日は 3月 29日です。</span>
+      </div>
+      <div class="contact_card">
+        <a class="contact_card_link" href="https://todo.shiokazehs.jp/@nirsmmy">
+          todo.shiokazehs.jp/@nirsmmy
+        </a>
+        <span class="contact_card_description">Misskey垢です。不定期更新。</span
+        >
+      </div>
+    </div>
   </main>
 
   <style lang="scss">
-    .main {
-      height: 100%;
-      background-color: var(--primary-color);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
     .container {
       display: grid;
-      gap: 20px;
+      grid-template-rows: 1fr 1fr;
+      height: 100%;
+      border: 10px solid var(--primary-brand-color);
+      padding: 40px 20%;
+
+      overflow: hidden;
+
+      @media screen and (max-width: 840px) {
+        padding: 30px;
+      }
+    }
+
+    .nameplate {
+      &_name {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+      &_yomi {
+        font-weight: bold;
+      }
+    }
+
+    .contact {
+      list-style: none;
+
+      &_card {
+        position: relative;
+
+        &_link {
+          display: inline-block;
+          padding: 4px 0;
+          z-index: 0;
+          position: relative;
+          color: var(--black-color);
+          text-decoration: none;
+
+          transition: color 0.3s ease, font-weight 0.3s ease;
+
+          &:hover {
+            font-weight: bold;
+            color: var(--primary-brand-color);
+
+            & + .contact_card_description {
+              transform: translateY(calc(-1.5em - 8px));
+              opacity: 1;
+            }
+          }
+        }
+
+        &_description {
+          padding: 5px;
+          position: absolute;
+          background-color: #f0f0f0;
+          transform: translateY(0);
+          z-index: 5;
+          opacity: 0;
+          bottom: 0;
+          left: 0;
+          pointer-events: none;
+          font-weight: bold;
+          transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+      }
+    }
+
+    .organization {
+      &_name {
+        font-weight: bold;
+      }
+      &_list {
+        list-style: none;
+      }
     }
   </style>
-</Layout>
+</BaseLayout>
