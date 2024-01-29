@@ -100,11 +100,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     .container {
       display: grid;
       grid-template-rows: 1fr auto;
-      height: 100%;
+      min-height: 100%;
       border: 10px solid var(--primary-brand-color);
       padding: 40px 20%;
+      gap: 40px;
 
-      overflow: hidden;
+      // overflow: hidden;
 
       @media screen and (max-width: 840px) {
         padding: 30px;
