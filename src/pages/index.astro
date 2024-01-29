@@ -7,6 +7,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div class="nameplate">
       <div class="nameplate_name">染宮ねいろ</div>
       <div class="nameplate_yomi">SOMEMIYA Neiro</div>
+      <ul class="profile">
+        <li>趣味は仕事, たまに旅行</li>
+        <li>メトロチックで可愛いデザインが好きです</li>
+        <li>同人誌即売会のお手伝いをします</li>
+        <li>小春六花, 双葉湊音, 千寿いろは すこすこオタク</li>
+        <li>
+          システム開発やデザイン制作, イベント開催支援は、<br />
+          有償案件のみ引き受けます。
+        </li>
+      </ul>
     </div>
     <div class="contact">
       <div class="contact_card">
@@ -53,6 +63,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </span>
       </div>
       <div class="contact_card">
+        <a class="contact_card_link" href="https://github.com/10mocy">
+          github.com/10mocy
+        </a>
+        <span class="contact_card_description">たまにコードを書きます。</span>
+      </div>
+      <div class="contact_card">
         <a class="contact_card_link" href="https://keybase.io/10mocy">
           keybase.io/10mocy
         </a>
@@ -83,7 +99,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <style lang="scss">
     .container {
       display: grid;
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: 1fr auto;
       height: 100%;
       border: 10px solid var(--primary-brand-color);
       padding: 40px 20%;
@@ -105,9 +121,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       }
     }
 
-    .contact {
-      list-style: none;
+    .profile {
+      margin-top: 10px;
+      padding-left: 20px;
 
+      list-style: disc;
+      li {
+        padding-bottom: 5px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .contact {
       &_card {
         position: relative;
 
