@@ -1,9 +1,29 @@
+---
+const siteName = "nrsy.jp";
+const description = "SOMEMIYA NEIRO Digital Business-Card";
+const siteURL = "https://nrsy.jp";
+const cardURL = `${siteURL}/card.jpg`;
+---
+
 <!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>nrsy.jp</title>
+    <meta name="generator" content={Astro.generator} />
+    <meta name="generator" content="NRSY-JP v2.0" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={siteName} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:image" content={cardURL} />
+    <meta property="og:url" content="https://nectarition.jp" />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nectarition" />
+    <meta name="twitter:title" content={siteName} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={cardURL} />
+    <title>{siteName}</title>
   </head>
   <body>
     <slot />
